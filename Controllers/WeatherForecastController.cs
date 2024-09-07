@@ -13,6 +13,7 @@ namespace AulaLogging.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
+
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
@@ -21,6 +22,10 @@ namespace AulaLogging.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogInformation("Teste de log, tipo information");
+            throw new Exception("Teste");
+
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
